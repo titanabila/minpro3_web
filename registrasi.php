@@ -50,6 +50,15 @@ if(isset($_POST['register'])) {
     <style>
         body {
             background-color: #f8f9fa;
+            background-image: url(image.png);
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
@@ -133,6 +142,10 @@ if(isset($_POST['register'])) {
             <p>Sudah memiliki akun? <a href="login.php">Masuk di sini</a></p>
         </div>
     </div>
+
+    <script>
+        
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
