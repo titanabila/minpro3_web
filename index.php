@@ -2,8 +2,9 @@
 session_start();
 require "dbconnect.php";
 
-if(!isset($_SESSION['login'])){
-    $notlogin = true;
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
 }
 ?>
 
@@ -12,7 +13,7 @@ if(!isset($_SESSION['login'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration and Login</title>
+    <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
@@ -20,6 +21,7 @@ if(!isset($_SESSION['login'])){
 
 </head>
 <body>
+<h1>Selamat datang, <?php echo $_SESSION['username']; ?>!</h1>
     <header>
         <h1>F1 Merchandise Store</h1>
         <nav>
@@ -27,7 +29,8 @@ if(!isset($_SESSION['login'])){
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="#kategori-produk">Kategori Produk</a></li>
                 <li><a href="#stok-produk">Stok Produk</a></li>
-                <li><a href="#admin">Admin</a></li>
+                <li><a href="admin.php">Admin</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -69,20 +72,20 @@ if(!isset($_SESSION['login'])){
         
         <div class="kategori-item">
             <a href="#">
-                <img src="leclerc tshirt.jpg" alt="Kaos" width="150">
+                <img src="leclerc tshirt.jpg" width="150">
                 <p>Kaos</p>
             </a>
         </div>
         <div class="kategori-item">
             <a href="#">
-                <img src="topi.jpg" alt="Topi" width="150">
+                <img src="topi mercy.jpg" width="150">
                 <p>Topi</p>
             </a>
         </div>
         <div class="kategori-item">
             <a href="#">
-                <img src="aksesoris.jpg" alt="Aksesoris" width="150">
-                <p>Aksesoris</p>
+                <img src="keychain.jpg" width="150">
+                <p>Keychain</p>
             </a>
         </div>
     </div>
@@ -91,48 +94,57 @@ if(!isset($_SESSION['login'])){
         <p>&copy; <?php echo date("Y"); ?> F1 Merchandise Store</p>
     </footer>
 
-    <section id="stok-produk">
-    <h2>Stok Produk</h2>
-    <?php
-    // Buat koneksi ke database
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "minpro3";
-
-    // Buat koneksi
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Periksa koneksi
-    if ($conn->connect_error) {
-        die("Koneksi gagal: " . $conn->connect_error);
-    }
-
-    // Query untuk mengambil data stok produk
-    $sql = "SELECT * FROM stok_produk";
-    $result = $conn->query($sql);
-
-    // Cek apakah ada data produk yang ditemukan
-    if ($result->num_rows > 0) {
-        // Tampilkan data produk
-        echo "<table>";
-        echo "<tr><th>ID</th><th>Nama Produk</th><th>Stok</th></tr>";
-        while($row = $result->fetch_assoc()) {
-            echo 
-            "<tr><td>" . $row["Id"] . 
-            "</td><td>" . $row["Produk"] . 
-            "</td><td>" . $row["Stok"] . 
-            "</td></tr>" . $row["Harga"];
-        }
-        echo "</table>";
-    } else {
-        echo "Tidak ada stok produk yang ditemukan";
-    }
-
-    // Tutup koneksi
-    $conn->close();
-    ?>
-</section>
+    <section class="stok-produk" id="stok-produk">
+        <div class="container">
+            <h2>Stok Produk</h2>
+            <p>Di bawah ini adalah daftar stok produk merchandise F1 yang tersedia:</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Produk</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">Stok</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Kaos Polo Mercedes AMG Petronas</td>
+                        <td>Pakaian</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Topi Red Bull Racing</td>
+                        <td>Aksesoris</td>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Jaket Ferrari Scuderia</td>
+                        <td>Pakaian</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Mug</td>
+                        <td>Aksesoris</td>
+                        <td>27</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Kaos Red Bull</td>
+                        <td>Pakaian</td>
+                        <td>39</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; <?php echo date("Y"); ?> F1 Merchandise Store</p>
+    </footer>
 
 
     <script>

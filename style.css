@@ -401,3 +401,46 @@ footer {
     padding: 20px;
     text-align: center;
 }
+
+.stok-produk {
+    padding: 50px 0; /* Padding untuk memberikan ruang di sekitar konten */
+    background-color: #f9f9f9; /* Warna latar belakang */
+}
+
+.stok-produk .container {
+    max-width: 800px; /* Lebar maksimum konten */
+    margin: 0 auto; /* Posisi tengah */
+}
+
+.stok-produk h2 {
+    text-align: center; /* Posisi teks menjadi tengah */
+    margin-bottom: 30px; /* Ruang bawah */
+}
+
+.stok-produk p {
+    margin-bottom: 20px; /* Ruang bawah */
+}
+
+.stok-produk table {
+    width: 100%; /* Lebar tabel menjadi 100% */
+    border-collapse: collapse; /* Menggabungkan border */
+    margin-bottom: 20px; /* Ruang bawah */
+}
+
+.stok-produk th, .stok-produk td {
+    border: 1px solid #ddd; /* Garis tepi */
+    padding: 8px; /* Ruang dalam konten */
+}
+
+.stok-produk th {
+    background-color: #f2f2f2; /* Warna latar belakang header */
+    text-align: left; /* Posisi teks menjadi kiri */
+}
+
+.stok-produk tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Warna latar belakang baris genap */
+}
+
+.stok-produk tbody tr:hover {
+    background-color: #ddd; /* Warna latar belakang saat dihover */
+}

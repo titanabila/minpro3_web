@@ -22,6 +22,8 @@ if(isset($_POST['login'])) {
     }
 }
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +32,16 @@ if(isset($_POST['login'])) {
     <style>
         body {
             background-color: #f8f9fa;
+            background-image: url(f1\ wallp.png);
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .login-container {
